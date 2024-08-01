@@ -11,6 +11,16 @@ class WhateverTests(TestCase):
         """
         foo = Whatever()
         x = foo.bar
+    
+    def test_get_attr(self):
+        """
+        If you set an attribute on whatever then that attribute will be what you set it to
+        """
+        foo = Whatever()
+        foo.bar = 'BAR'
+        self.assertEqual(foo.bar, 'BAR')
+        foo.bar = 'foobar'
+        self.assertEqual(foo.bar, 'foobar')
 
     def test_get_attr_children_classes(self):
         """
@@ -85,6 +95,15 @@ class WhateverTests(TestCase):
         self.assertTrue(foo / foo is foo)
         self.assertTrue(foo % foo is foo)
 
+    def test_cast_to_string(self):
+        """
+        Whatever as a string is "Whatever"
+        """
+        foo = Whatever()
+        self.assertEqual('Whatever', str(foo))
+        self.assertTrue(isinstance(str(foo), str))
+
+
     def test_boolean_arithmatic(self):
         """
         You can even do whatever you want on the bytes of whatever, but it will still be whatever
@@ -95,8 +114,12 @@ class WhateverTests(TestCase):
 
     def test_is_instance(self):
         """
-        Whatever can be any type of thing
+        Everything is kinda whatever
         """
-        # TODO
-        pass
+        #TODO
+        self.assertTrue(isinstance('blah', Whatever))
+        self.assertTrue(isinstance(5, Whatever))
+        self.assertTrue(isinstance(5.5, Whatever))
+        self.assertTrue(isinstance(True, Whatever))
+        self.assertTrue(isinstance(self, Whatever))
 

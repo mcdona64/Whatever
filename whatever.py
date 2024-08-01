@@ -12,6 +12,12 @@ class Whatever:
 
     def __repr__(self):
         return 'Whatever'
+    
+    def __str__(self):
+        return 'Whatever'
+
+    def __instancecheck__(self, instance):
+        return True
 
     def __gt__(self, other):
         return True
